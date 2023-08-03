@@ -9,4 +9,7 @@ class MainRepository(
     fun getTrendingMovies() = remoteDataSource.getTrendingMovies()
     fun getTrendingTv() = remoteDataSource.getTrendingTv()
     fun getImagesTv(id:Int) = remoteDataSource.getImagesTv(id)
+    fun getSearchMovie(query:String) = remoteDataSource.getSearchMovie(query)
+    fun getSearchTv(query:String) = remoteDataSource.getSearchTv(query)
+
 }

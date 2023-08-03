@@ -28,7 +28,6 @@ class TvFragment : Fragment() {
 
     private lateinit var binding: FragmentTvBinding
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,44 +39,41 @@ class TvFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(isAdded){
+            groupAdapter = GroupieAdapter()
+            televisionViewModel.getTrendingTv()
 
-        groupAdapter = GroupieAdapter()
-        televisionViewModel.getTrendingTv()
-
-        getDataTV()
-
-        val intent = Intent(requireActivity(), DetailTvActivity::class.java)
-        groupAdapter.setOnItemClickListener { item, view ->
-            val itemdata = item as AdapterTelevision
-            intent.putExtra("tv",itemdata.item)
-            startActivity(intent)
+            binding.imgSearch.setOnClickListener {
+                startActivity(Intent(requireContext(),SearchTvActivity::class.java))
+            }
+            getDataTV()
+            setrecycleview()
         }
+    }
 
-        binding.recycleviewTv.adapter = groupAdapter
+    private fun setrecycleview() {
+        if (isAdded){
+            val intent = Intent(requireActivity(), DetailTvActivity::class.java)
+            groupAdapter.setOnItemClickListener { item, view ->
+                val itemdata = item as AdapterTelevision
+                intent.putExtra("tv",itemdata.item)
+                startActivity(intent)
+            }
+            binding.recycleviewTv.adapter = groupAdapter
+        }
     }
 
     private fun getDataTV() {
-        InternetCheck(object : InternetCheck.Consumer {
-            override fun accept(internet: Boolean?) {
-                if (internet == true) {
-                    televisionViewModel.getResponse().observeOnce(requireActivity()) {
-                        it?.forEach { draw ->
-                            groupAdapter.add(AdapterTelevision(draw))
-                        }
-                    }
-                    if (televisionViewModel.getResponse().hasObservers()) {
-                        binding.progressbar.visibility = View.INVISIBLE
-                    }
-                } else {
-                    Toast.makeText(requireContext(), "turn your internet", Toast.LENGTH_SHORT)
-                        .show()
-                    binding.appCompatButton.visibility = View.VISIBLE
-                    binding.appCompatButton.setOnClickListener {
-                        getDataTV()
-                    }
+        if (isAdded){
+            televisionViewModel.getResponse().observeOnce(viewLifecycleOwner) {
+                it?.forEach { draw ->
+                    groupAdapter.add(AdapterTelevision(draw))
                 }
             }
-        })
+            if (televisionViewModel.getResponse().hasObservers()) {
+                binding.progressbar.visibility = View.INVISIBLE
+            }
+        }
     }
 
     companion object {

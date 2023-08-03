@@ -19,8 +19,8 @@ class SearchMovieViewModel(private val repository: MainRepository) : ViewModel()
     private val mResponse = MutableLiveData<List<DataMovie>?>()
     internal fun getResponse(): MutableLiveData<List<DataMovie>?> =  mResponse
 
-    fun getTrendingMovies() = viewModelScope.launch {
-        repository.getTrendingMovies().collect {
+    fun getSearchMovie(query:String) = viewModelScope.launch {
+        repository.getSearchMovie(query).collect {
             it.enqueue(object : Callback<Movies> {
                 override fun onResponse(
                     call: Call<Movies>,

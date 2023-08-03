@@ -19,6 +19,12 @@ class ViewModelFactory (private val mainRepository: MainRepository) : ViewModelP
         else if (modelClass.isAssignableFrom(ImgTvViewModel::class.java)){
             return ImgTvViewModel(mainRepository) as T
         }
+        else if (modelClass.isAssignableFrom(SearchMovieViewModel::class.java)){
+            return SearchMovieViewModel(mainRepository) as T
+        }
+        else if (modelClass.isAssignableFrom(SearchTvViewModel::class.java)){
+            return SearchTvViewModel(mainRepository) as T
+        }
         throw IllegalArgumentException("unknown ViewModel class: " + modelClass.name)
     }
 

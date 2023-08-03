@@ -6,6 +6,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.TvFragment">
 
+    <ImageView
+        android:id="@+id/img_search"
+        android:layout_width="28dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Television"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/recycleview_Tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview_Tv"
         android:layout_width="0dp"
@@ -14,7 +37,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_search"
         app:spanCount="1" />
 
     <ProgressBar

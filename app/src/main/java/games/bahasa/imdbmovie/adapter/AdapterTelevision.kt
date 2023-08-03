@@ -41,7 +41,7 @@ class AdapterTelevision(val item: DataTvShow) : BindableItem<ItemMoviesBinding?>
             langTv.text = "lang " +item.original_language
             dateTv.text = item.first_air_date
 
-            buyTv.text =  item.media_type +" program"
+            buyTv.text =  "tv program"
         }
     }
 }

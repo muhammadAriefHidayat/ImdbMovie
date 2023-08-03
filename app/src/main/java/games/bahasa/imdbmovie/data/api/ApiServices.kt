@@ -12,6 +12,11 @@ interface ApiServices {
     fun getTrendingMovies(
     ): Call<Movies>
 
+    @GET("/3/search/movie")
+    fun getSearchMovie(
+        @Query("query") query: String
+    ): Call<Movies>
+
     @GET("3/trending/tv/day")
     fun getTrendingTv(
     ): Call<Tv>
@@ -19,5 +24,14 @@ interface ApiServices {
     @GET("3/tv/{id}/images")
     fun getImagesTv(@Path("id") id: Int
     ): Call<ImagesBackdrop>
+
+    @GET("3/trending/tv/day")
+    fun searchTv(
+    ): Call<Movies>
+
+    @GET("3/search/tv")
+    fun getSearchTv(
+        @Query("query") query: String
+    ): Call<Tv>
 
 }

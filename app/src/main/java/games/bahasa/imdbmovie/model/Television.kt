@@ -20,25 +20,25 @@ data class DataTvShow(
     @SerializedName("name")
     val name: String,
     @SerializedName("original_language")
-    val original_language: String,
+    val original_language: String?,
     @SerializedName("original_name")
-    val original_name: String,
+    val original_name: String?,
     @SerializedName("overview")
-    val overview: String,
+    val overview: String?,
     @SerializedName("poster_path")
     val poster_path: String?,
     @SerializedName("media_type")
-    val media_type: String,
+    val media_type: String?,
     @SerializedName("genre_ids")
-    val genre_ids: List<Int>,
+    val genre_ids: List<Int>?,
     @SerializedName("popularity")
-    val popularity: Double,
+    val popularity: Double?,
     @SerializedName("first_air_date")
-    val first_air_date: String,
+    val first_air_date: String?,
     @SerializedName("vote_average")
-    val vote_average: Double,
+    val vote_average: Double?,
     @SerializedName("vote_count")
-    val vote_count: Int,
+    val vote_count: Int?,
     @SerializedName("origin_country")
-    val origin_country: List<String>
+    val origin_country: List<String>?
 ):Parcelable

@@ -33,7 +33,7 @@ class AdapterMovies(val item: DataMovie) : BindableItem<ItemMoviesBinding?>() {
             setimageglide(root.context,
                 url+item.poster_path, posterImg)
 
-            if (item.adult){
+            if (item.adult == true){
                 ageTv.text = "17+"
             }else{
                 ageTv.text = "SU"
