@@ -1,6 +1,7 @@
 package games.bahasa.imdbmovie.data.api
 
 
+import games.bahasa.imdbmovie.model.ImagesBackdrop
 import games.bahasa.imdbmovie.model.Movies
 import games.bahasa.imdbmovie.model.Tv
 import retrofit2.Call
@@ -14,5 +15,9 @@ interface ApiServices {
     @GET("3/trending/tv/day")
     fun getTrendingTv(
     ): Call<Tv>
+
+    @GET("3/tv/{id}/images")
+    fun getImagesTv(@Path("id") id: Int
+    ): Call<ImagesBackdrop>
 
 }
