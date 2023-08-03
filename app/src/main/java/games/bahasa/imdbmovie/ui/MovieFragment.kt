@@ -1,15 +1,14 @@
 package games.bahasa.imdbmovie.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import games.bahasa.imdbmovie.R
-import games.bahasa.imdbmovie.utils.InternetCheck
+import games.bahasa.imdbmovie.utils.Utility.checkInternet
 import games.bahasa.imdbmovie.utils.observeOnce
 import games.bahasa.imdbmovie.viewmodel.MoviesViewModel
 import games.bahasa.imdbmovie.viewmodel.ViewModelFactory
@@ -31,22 +30,13 @@ class MovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tMoviesViewModel.getTrendingMovies()
-        checkInternet()
+        checkInternet(requireContext())
         tMoviesViewModel.getResponse().observeOnce(requireActivity()){itemArrayList->
             itemArrayList?.forEach {
                 Log.d("member", it.title)
 //                groupAdapter.add(AdapterMember(it))
             }
         }
-    }
-    fun checkInternet(){
-        InternetCheck(object : InternetCheck.Consumer {
-            override fun accept(internet: Boolean?) {
-                if (internet == true) {
-
-                }
-            }
-        })
     }
 
     companion object {

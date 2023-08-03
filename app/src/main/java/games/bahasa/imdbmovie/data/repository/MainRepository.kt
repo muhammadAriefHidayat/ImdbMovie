@@ -7,4 +7,5 @@ class MainRepository(
     private val remoteDataSource: RemoteDataSource
 ) {
     fun getTrendingMovies() = remoteDataSource.getTrendingMovies()
+    fun getTrendingTv() = remoteDataSource.getTrendingTv()
 }

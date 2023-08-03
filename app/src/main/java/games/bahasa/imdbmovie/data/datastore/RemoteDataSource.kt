@@ -15,4 +15,10 @@ class RemoteDataSource(private val apiServices: ApiServices) {
     }.catch {
         Log.d("getTrendingMovies", "movies: failed = ${it.message}")
     }.flowOn(Dispatchers.IO)
+
+    fun getTrendingTv() = flow {
+        emit(apiServices.getTrendingTv())
+    }.catch {
+        Log.d("getTrendingTv", "tv: failed = ${it.message}")
+    }.flowOn(Dispatchers.IO)
 }
