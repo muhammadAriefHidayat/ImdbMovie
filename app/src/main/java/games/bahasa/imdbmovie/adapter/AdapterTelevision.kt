@@ -9,10 +9,10 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.xwray.groupie.viewbinding.BindableItem
 import games.bahasa.imdbmovie.R
 import games.bahasa.imdbmovie.databinding.ItemMoviesBinding
-import games.bahasa.imdbmovie.model.DataMovie
+import games.bahasa.imdbmovie.model.DataTvShow
 import games.bahasa.imdbmovie.utils.Utility.setimageglide
 
-class AdapterMovies(val item: DataMovie) : BindableItem<ItemMoviesBinding?>() {
+class AdapterTelevision(val item: DataTvShow) : BindableItem<ItemMoviesBinding?>() {
 
     override fun initializeViewBinding(view: View): ItemMoviesBinding =
         ItemMoviesBinding.bind(view)
@@ -25,22 +25,23 @@ class AdapterMovies(val item: DataMovie) : BindableItem<ItemMoviesBinding?>() {
         viewBinding.apply {
             Log.d("item_backdrop",item.backdrop_path.toString())
             val url = "https://image.tmdb.org/t/p/w500"
-            titleTv.text = item.title
+            titleTv.text = item.name
 
-            setimageglide(root.context,
-                url+item.backdrop_path, backdropImg
-            )
             setimageglide(root.context,
                 url+item.poster_path, posterImg)
 
-            if (item.adult == true){
+            setimageglide(root.context,
+                url+item.backdrop_path, backdropImg)
+
+            if (item.adult){
                 ageTv.text = "17+"
             }else{
-                ageTv.text = "SU"
+                ageTv.text = "All Age"
             }
+            langTv.text = "lang " +item.original_language
+            dateTv.text = item.first_air_date
 
-            langTv.text = "lang:" + item.original_language
-            dateTv.text = "Age:"+item.release_date
+            buyTv.text =  "tv program"
         }
     }
 }

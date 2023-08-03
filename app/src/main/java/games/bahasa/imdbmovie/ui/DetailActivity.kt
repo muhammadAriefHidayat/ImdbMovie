@@ -35,13 +35,15 @@ class DetailActivity : AppCompatActivity() {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(posterImg)
 
-//            if (item.adult) {
-//                ageTv.text = "17+"
-//            } else {
-//                ageTv.text = "SU"
-//            }
-//            langTv.text = item.original_language
-//            dateTv.text = item.release_date
+            val formattedRating = detailMovie?.vote_average?.toFloat()
+            if (formattedRating != null) {
+                ratingBar.rating = formattedRating
+            }
+
+            rateTv.text = "rate: ${detailMovie?.vote_average}"
+            langTv.text = detailMovie?.original_language
+            overviewTv.text = detailMovie?.overview
+            dateTv.text = detailMovie?.release_date
         }
     }
 }

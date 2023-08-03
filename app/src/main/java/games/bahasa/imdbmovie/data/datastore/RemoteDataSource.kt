@@ -21,4 +21,25 @@ class RemoteDataSource(private val apiServices: ApiServices) {
     }.catch {
         Log.d("getTrendingTv", "tv: failed = ${it.message}")
     }.flowOn(Dispatchers.IO)
+
+
+    fun getSearchTv(query:String) = flow {
+        emit(apiServices.getSearchTv(query))
+    }.catch {
+        Log.d("getTrendingTv", "tv: failed = ${it.message}")
+    }.flowOn(Dispatchers.IO)
+
+
+    fun getSearchMovie(query:String) = flow {
+        emit(apiServices.getSearchMovie(query))
+    }.catch {
+        Log.d("getTrendingTv", "tv: failed = ${it.message}")
+    }.flowOn(Dispatchers.IO)
+
+
+    fun getImagesTv(id:Int) = flow {
+        emit(apiServices.getImagesTv(id))
+    }.catch {
+        Log.d("getimg", "tv: failed = ${it.message}")
+    }.flowOn(Dispatchers.IO)
 }

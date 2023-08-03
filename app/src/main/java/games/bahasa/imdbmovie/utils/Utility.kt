@@ -1,6 +1,7 @@
 package games.bahasa.imdbmovie.utils
 
 import android.content.Context
+import android.media.Image
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -19,6 +20,14 @@ object Utility {
             .load(drawable)
             .apply(requestOptions)
             .transition(DrawableTransitionOptions.withCrossFade())
+            .into(imageView)
+    }
+
+    fun setimageglide(context: Context,url:String,imageView: ImageView){
+        Glide.with(context)
+            .load(url)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(imageView)
     }
 
