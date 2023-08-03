@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.ImdbMovie" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.ImdbMovie" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorCheckboxDefaultNormal</item>
         <item name="colorPrimaryDark">@color/md_grey_800</item>
